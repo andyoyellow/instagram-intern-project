@@ -1,5 +1,8 @@
 # Rebuild Instagram Project
 
+# Deliverable
+Let's build a fully reponsive, semantic, and accessible instagram using single purpose classes (aka Utility classes) and ReactJS. Let's have our site be fast, readable, and accessible to blind people and folks who don't use the mouse too. Everyone should be able to consume your content online. Whoohoo!
+
 # Goals
 * Use Single Purpose Classes
 * Learn about Flexbox
