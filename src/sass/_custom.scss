@@ -3,12 +3,27 @@
  *  ============================================================================= */
 .gold { outline: 1px solid gold; }
 
+.mh-50px{ max-height: 50px; }
+
+.mw-350px{ max-width: 350px; }
+
+/*
+===============
+* FLEX STYLES
+===============
+*/
+.ff-row { flex-flow: row; }
+.jc-sb { justify-content: space-between; }
+.br-circle { border-radius: 50%;}
+.vcenter { margin-top: auto; margin-bottom: auto; }
 
 /*
  * TYPOGRAPHY
  * ============================================================================= */
 
-
+.helvetica { font-family: 'Helvetica Neue', sans-serif; }
+.blue-text{ color: #37719a;}
+.grey-text{ color: #c9c9c9;}
 
 
 /*
