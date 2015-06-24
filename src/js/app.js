@@ -7,25 +7,30 @@ let posts = [
 let CardHeader = React.createClass({
   displayName: "CardHeader",
   render() {
-    <p>Card Header</p>
-  
+    return (
+      <p>Card Header</p>
+    )
   }
 });
 
 let CardFooter = React.createClass({
   displayName: "CardFooter",
   render() {
-    <p> Card Footer </p>
+    return (
+      <p> Card Footer </p>
+    )
   }
 });
 
 let Card = React.createClass({
   displayName: "Card",
   render() {
-    <div>
-      <CardHeader />
-      <CardFooter />
-    </div>
+    return (
+      <div>
+        <CardHeader />
+        <CardFooter />
+      </div>
+    )
   }
 });
 
@@ -33,9 +38,7 @@ let App = React.createClass({
   displayName: "App",
   render() {
     return (
-      <div>
-        <Card />
-      </div>
+      <Card />
     );
   }
 });
