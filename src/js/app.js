@@ -8,7 +8,13 @@ let CardHeader = React.createClass({
   displayName: "CardHeader",
   render() {
     return (
-      <p>Card Header</p>
+      <header className="df ff-row ff-vcenter jc-sb">
+        <div className="df ff-row ff-vcenter">
+          <img src={"assets/userAvatars/" + this.props.avatar + ".jpg"} alt="user photo" className="mh-50px br-circle mas"/>
+          <a href="#" className="helvetica blue-text">{this.props.name}</a>
+        </div>
+        <p className="helvetica grey-text">{this.props.timestamp}</p>
+      </header>
     )
   }
 });
@@ -17,7 +23,13 @@ let CardFooter = React.createClass({
   displayName: "CardFooter",
   render() {
     return (
-      <p> Card Footer </p>
+      <footer className="df ff-row jc-sb">
+        <div>
+          <p className="fa fa-heart-o mas f2 grey-text"></p>
+          <p className="fa fa-comment-o mas f2 grey-text"></p>
+        </div>
+        <p className="fa fa-ellipsis-h mas f2 grey-text"></p>
+      </footer>
     )
   }
 });
@@ -27,7 +39,8 @@ let Card = React.createClass({
   render() {
     return (
       <div>
-        <CardHeader />
+        <CardHeader name={this.props.post.name} avatar={this.props.post.avatar} timestamp={this.props.post.timestamp}/>
+        <img src={"assets/postedPhotos/" + this.props.post.image + ".png"} alt={this.props.post.image} />
         <CardFooter />
       </div>
     )
@@ -36,15 +49,28 @@ let Card = React.createClass({
 
 let App = React.createClass({
   displayName: "App",
+  renderPosts(){
+    //Creating an array of Card components
+    let cards = [];
+    //iterating over posts array above to populate Card components
+    //consider map function as an alternative
+    for(let i = 0; i < this.props.posts.length; i++){
+      cards.push(<Card post={this.props.posts[i]} />);
+    }
+    //Because apparently Javascript requires that everything returns data (if you want to use it)
+    return cards;
+  },
   render() {
     return (
-      <Card />
+      <div>
+        {this.renderPosts()}
+      </div>
     );
   }
 });
 
 
 React.render(
-  <App />,
+  <App posts={posts} />,
   document.getElementById("app")
 );
