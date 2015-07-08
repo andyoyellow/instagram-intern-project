@@ -14,13 +14,13 @@
  */
 .assistive-text {
   position: absolute;
+  border: 0;
+  clip-path: rect(1px, 1px, 1px, 1px);
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
+  padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
 }
 
 
@@ -409,4 +409,3 @@ textarea { border: none; }
 .mhl  { margin-left: 2rem;   margin-right: 2rem;   }
 .mhx  { margin-left: 4rem;   margin-right: 4rem;   }
 }
-

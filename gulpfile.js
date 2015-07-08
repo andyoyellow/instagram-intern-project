@@ -18,7 +18,7 @@ gulp.task('sass', function(){
       console.log('Error!', err.message);
     })
     .pipe(autoprefixer())
-    .pipe(minifycss())
+    //.pipe(minifycss())
     .pipe(rename('styles.min.css'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());

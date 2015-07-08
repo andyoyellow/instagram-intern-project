@@ -2,18 +2,30 @@
  *  CUSTOM STYLES
  *  ============================================================================= */
 
-.br-50 {border-radius: 50%;}
-.mh-44 {max-height: 44px;}
-.w-360 {width: 360px;}
 
-.jc-sb {justify-content: space-between;}
+.sq-50px{ height: 50px; width: 50px}
 
+.mw-350px{ max-width: 350px; }
+
+.ovf-hidden{ overflow: hidden; }
+
+/*
+===============
+* FLEX STYLES
+===============
+*/
+.ff-row { flex-flow: row; }
+.jc-sb { justify-content: space-between; }
+.br-circle { border-radius: 50%;}
+.vcenter { margin-top: auto; margin-bottom: auto; }
+.ff-vcenter{ align-items:center; };
 /*
  * TYPOGRAPHY
  * ============================================================================= */
 
-.fc-alt { color: grey; }
-.fc-main { color: blue;}
+.helvetica { font-family: 'Helvetica Neue', sans-serif; }
+.blue-text{ color: #37719a; }
+.grey-text{ color: #c9c9c9; }
 
 
 /*
@@ -26,8 +38,3 @@
 /*
  * FORM FIELDS & COMPONENTS
  * ============================================================================= */
-
-
-
-
-
