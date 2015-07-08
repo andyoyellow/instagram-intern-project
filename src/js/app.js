@@ -25,10 +25,16 @@ let CardFooter = React.createClass({
     return (
       <footer className="df ff-row jc-sb">
         <div>
-          <p className="fa fa-heart-o mas f2 grey-text"></p>
-          <p className="fa fa-comment-o mas f2 grey-text"></p>
+          <button className="fa fa-heart-o mas f2 grey-text">
+            <span className="assistive-text">Favorite this post</span>
+          </button>
+          <button className="fa fa-comment-o mas f2 grey-text">
+            <span className="assistive-text">Comment on this post</span>
+          </button>
         </div>
-        <p className="fa fa-ellipsis-h mas f2 grey-text"></p>
+        <button className="fa fa-ellipsis-h mas f2 grey-text">
+          <span className="assistive-text">More options</span>
+        </button>
       </footer>
     )
   }
