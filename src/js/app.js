@@ -10,7 +10,7 @@ let CardHeader = React.createClass({
     return (
       <header className="df ff-row ff-vcenter jc-sb">
         <div className="df ff-row ff-vcenter">
-          <img src={"assets/userAvatars/" + this.props.avatar + ".jpg"} alt="user photo" className="mh-50px br-circle mas"/>
+          <img src={"assets/userAvatars/" + this.props.avatar + ".jpg"} alt="user photo" className="sq-50px ovf-hidden br-circle mas"/>
           <a href="#" className="helvetica blue-text">{this.props.name}</a>
         </div>
         <p className="helvetica grey-text">{this.props.timestamp}</p>
@@ -50,14 +50,23 @@ let Card = React.createClass({
 let App = React.createClass({
   displayName: "App",
   renderPosts(){
+    /*
     //Creating an array of Card components
     let cards = [];
-    //iterating over posts array above to populate Card components
-    //consider map function as an alternative
+    //==========================================================
+    //Iterating over posts array to populate Card components
+    //==========================================================
     for(let i = 0; i < this.props.posts.length; i++){
       cards.push(<Card post={this.props.posts[i]} />);
     }
     //Because apparently Javascript requires that everything returns data (if you want to use it)
+    return cards;
+    */
+    //==========================================================
+    //functional alternative of for loop for Card components
+    //maps data for posts from App component to Card components
+    //==========================================================
+    let cards = this.props.posts.map(function(currentPost) { return <Card post={currentPost} className="mw-350px"/>; });
     return cards;
   },
   render() {
@@ -68,7 +77,6 @@ let App = React.createClass({
     );
   }
 });
-
 
 React.render(
   <App posts={posts} />,
