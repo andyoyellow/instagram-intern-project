@@ -21,14 +21,31 @@ let CardHeader = React.createClass({
 
 let CardFooter = React.createClass({
   displayName: "CardFooter",
+  getInitialState() {
+    return {
+      isFavorited: this.props.isFavorited
+    }
+  },
+  toggleFavorited() {
+    this.setState({
+      isFavorited: !this.state.isFavorited
+    })
+  },
   render() {
+    let iconColor=this.state.isFavorited ? "red-text" : "grey-text";
     return (
       <footer className="df ff-row jc-sb">
         <div>
-          <p className="fa fa-heart-o mas f2 grey-text"></p>
-          <p className="fa fa-comment-o mas f2 grey-text"></p>
+          <button className={"fa fa-heart-o mas f2 " + iconColor} onClick={this.toggleFavorited}>
+            <span className="assistive-text">Favorite this post</span>
+          </button>
+          <button className="fa fa-comment-o mas f2 grey-text">
+            <span className="assistive-text">Comment on this post</span>
+          </button>
         </div>
-        <p className="fa fa-ellipsis-h mas f2 grey-text"></p>
+        <button className="fa fa-ellipsis-h mas f2 grey-text">
+          <span className="assistive-text">More options</span>
+        </button>
       </footer>
     )
   }
@@ -41,7 +58,7 @@ let Card = React.createClass({
       <div>
         <CardHeader name={this.props.post.name} avatar={this.props.post.avatar} timestamp={this.props.post.timestamp}/>
         <img src={"assets/postedPhotos/" + this.props.post.image + ".png"} alt={this.props.post.image} />
-        <CardFooter />
+        <CardFooter isFavorited={this.props.post.isFavorited} />
       </div>
     )
   }
@@ -66,7 +83,9 @@ let App = React.createClass({
     //functional alternative of for loop for Card components
     //maps data for posts from App component to Card components
     //==========================================================
-    let cards = this.props.posts.map(function(currentPost) { return <Card post={currentPost} className="mw-350px"/>; });
+    let cards = this.props.posts.map(function(currentPost) { 
+      return <Card post={currentPost} className="mw-350px"/>; 
+    });
     return cards;
   },
   render() {
