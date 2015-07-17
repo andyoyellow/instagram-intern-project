@@ -1,4 +1,4 @@
-let posts = [
+let POSTS = [
   { name: "Jay Z", avatar: "jayZ", timestamp: "1h", image: "warriors-parade", isFavorited: false },
   { name: "Beyonce", avatar: "beyonce", timestamp: "2h", image: "beach", isFavorited: false },
   { name: "Janelle", avatar: "janelle", timestamp: "3h", image: "water-color", isFavorited: false },
@@ -21,18 +21,11 @@ let CardHeader = React.createClass({
 
 let CardFooter = React.createClass({
   displayName: "CardFooter",
-  getInitialState() {
-    return {
-      isFavorited: this.props.isFavorited
-    }
-  },
-  toggleFavorited() {
-    this.setState({
-      isFavorited: !this.state.isFavorited
-    })
+  toggleFavorited(){
+    this.props.toggleFavorited(this.props.post)
   },
   render() {
-    let iconColor=this.state.isFavorited ? "red-text" : "grey-text";
+    let iconColor="grey-text";
     return (
       <footer className="df ff-row jc-sb">
         <div>
@@ -58,7 +51,7 @@ let Card = React.createClass({
       <div>
         <CardHeader name={this.props.post.name} avatar={this.props.post.avatar} timestamp={this.props.post.timestamp}/>
         <img src={"assets/postedPhotos/" + this.props.post.image + ".png"} alt={this.props.post.image} />
-        <CardFooter isFavorited={this.props.post.isFavorited} />
+        <CardFooter post={this.props.post} toggleFavorited={this.props.toggleFavorited} />
       </div>
     )
   }
@@ -66,6 +59,13 @@ let Card = React.createClass({
 
 let App = React.createClass({
   displayName: "App",
+  //standard getInitialState function; try to make a shortcut of this
+  getInitialState() {
+    //pass in data as a state variable
+    return {
+      posts: this.props.posts
+    };
+  },
   renderPosts(){
     /*
     //Creating an array of Card components
@@ -79,12 +79,16 @@ let App = React.createClass({
     //Because apparently Javascript requires that everything returns data (if you want to use it)
     return cards;
     */
+    let toggleFavorited = function(card){
+      card.isFavorited = !card.isFavorited;
+      console.log(card.isFavorited);
+    };
     //==========================================================
     //functional alternative of for loop for Card components
     //maps data for posts from App component to Card components
     //==========================================================
-    let cards = this.props.posts.map(function(currentPost) { 
-      return <Card post={currentPost} className="mw-350px"/>; 
+    let cards = this.state.posts.map(function(currentPost) {
+      return <Card post={currentPost} toggleFavorited={toggleFavorited} className="mw-350px"/>;
     });
     return cards;
   },
@@ -98,6 +102,6 @@ let App = React.createClass({
 });
 
 React.render(
-  <App posts={posts} />,
+  <App posts={POSTS} />,
   document.getElementById("app")
 );
