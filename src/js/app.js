@@ -25,7 +25,7 @@ let CardFooter = React.createClass({
     this.props.toggleFavorited(this.props.post)
   },
   render() {
-    let iconColor="grey-text";
+    let iconColor=this.props.post.isFavorited ? "red-text" : "grey-text";
     return (
       <footer className="df ff-row jc-sb">
         <div>
@@ -76,7 +76,7 @@ let App = React.createClass({
     for(let i = 0; i < this.props.posts.length; i++){
       cards.push(<Card post={this.props.posts[i]} />);
     }
-    //Because apparently Javascript requires that everything returns data (if you want to use it)
+    //Because Javascript requires that everything returns data (if you want to use it)
     return cards;
     */
     let toggleFavorited = function(card){
